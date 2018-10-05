@@ -555,7 +555,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Greger\repos\training\food-recipe-core\src\styles.less */"./src/styles.less");
+module.exports = __webpack_require__(/*! C:\Greger\repos\food-recipe-core\food-recipe-core\src\styles.less */"./src/styles.less");
 
 
 /***/ })
