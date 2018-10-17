@@ -6,7 +6,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
+import { FetchDataService } from './api-service/data-fetcher-service';
+import DataFetcher from './api-service/data-fetcher';
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -16,9 +19,13 @@ var AppModule = /** @class */ (function () {
                 AppComponent
             ],
             imports: [
-                BrowserModule
+                BrowserModule,
+                HttpClientModule
             ],
-            providers: [],
+            providers: [
+                DataFetcher,
+                FetchDataService
+            ],
             bootstrap: [AppComponent]
         })
     ], AppModule);

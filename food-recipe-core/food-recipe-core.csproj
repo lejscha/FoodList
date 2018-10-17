@@ -6,11 +6,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="src\app\models\Recipe.ts" />
+    <None Remove="src\app\models\Tag.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="src\app\models\Recipe.ts" />
+    <TypeScriptCompile Include="src\app\models\Tag.ts" />
   </ItemGroup>
 
 </Project>

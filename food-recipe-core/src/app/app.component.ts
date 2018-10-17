@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
+import DataFetcher from './api-service/data-fetcher'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less']
+  styleUrls: ['./app.component.less'],
 })
+
 export class AppComponent {
-  title = 'food-recipe-core';
+
+  constructor(private readonly dataFetcher: DataFetcher) { }
+
+  title = 'Våra recept';
+  recipies = this.dataFetcher.recipes;
 }
