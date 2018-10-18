@@ -12,8 +12,8 @@ import DataFetcher from './api-service/data-fetcher';
 var AppComponent = /** @class */ (function () {
     function AppComponent(dataFetcher) {
         this.dataFetcher = dataFetcher;
-        this.title = 'food-recipe-core';
-        this.bla = this.dataFetcher.test;
+        this.title = 'Våra recept';
+        this.recipies = this.dataFetcher.recipes;
     }
     AppComponent = __decorate([
         Component({

@@ -47,23 +47,17 @@ import { Injectable } from '@angular/core';
 var DataFetcher = /** @class */ (function () {
     function DataFetcher(dataFetcherService) {
         this.dataFetcherService = dataFetcherService;
-        this.test = this.getRecipies();
+        this.recipes = this.getRecipies();
     }
     DataFetcher.prototype.getRecipies = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var d;
+            var recipes;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        debugger;
-                        return [4 /*yield*/, this.dataFetcherService.getRecipies().then(function (data) {
-                                d = data;
-                            })];
+                    case 0: return [4 /*yield*/, this.dataFetcherService.getRecipies().then(function (data) { return recipes = data; })];
                     case 1:
                         _a.sent();
-                        this.test = d;
-                        debugger;
-                        return [2 /*return*/, this.test];
+                        return [2 /*return*/, this.recipes = recipes];
                 }
             });
         });
