@@ -1,4 +1,10 @@
-<div *ngFor="let recipe of recipies | async" class="recipe-container" style="background-color: white">
+
+<div *ngFor="let tag of tags | async">
+  <p>{{tag.name}}</p>
+</div>
+
+
+<div *ngFor="let recipe of recipies | async" class="recipe-container" style="background-color: white; border-radius:15%; border-right: 1px solid black; border-left: 1px solid black; padding-left:120px; padding-right:120px;">
   <div>
     <h3>
       <strong>{{recipe.name}}</strong>
@@ -6,16 +12,20 @@
   </div>
 
   <div class="row" style="margin-bottom: 1em;">
-    <div class="col-md-4">
-      <img src="{{recipe.imageUrl}}" style="height:100%; width:100%;" />
+    <div class="col-md-4" style="border-left:1px solid black; border-radius:50%;">
+      <img src="{{recipe.imageUrl}}" style="height:100%; width:100%; border-radius:50%;" />
+      <hr />
     </div>
-    <div class="col-md-8">
 
+    <div class="col-md-8">
       <div *ngFor="let tag of recipe.tags" class="btn btn-default btn-md" style="margin:5px;">
         {{tag.name}}
       </div>
+
     </div>
+
   </div>
+
   <div class="row">
     <div class="col-md-4">
       <h4>

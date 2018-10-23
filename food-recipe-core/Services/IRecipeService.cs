@@ -1,4 +1,4 @@
-﻿using recipe_food.Models;
+using recipe_food.Models;
 using System.Collections.Generic;
 
 namespace recipe_food.Controllers
@@ -8,5 +8,7 @@ namespace recipe_food.Controllers
         List<Recipe> GetAllRecipies();
 
         List<Recipe> GetRecipiesByTags();
-    }
+
+        IEnumerable<Tag> GetTags();
+  }
 }   

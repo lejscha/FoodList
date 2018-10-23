@@ -24,6 +24,14 @@ namespace food_recipe_core.Controllers
       return Json(_serviceBase.GetService<IRecipeService>().GetAllRecipies());
     }
 
+    // GET: api/<controller>
+    [Route("GetTags")]
+    [HttpGet]
+    public JsonResult GetTags()
+    {
+      return Json(_serviceBase.GetService<IRecipeService>().GetTags());
+    }
+
     // GET api/<controller>/5
     [HttpGet("{id}")]
     public string Get(int id)

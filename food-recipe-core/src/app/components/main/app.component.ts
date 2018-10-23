@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import DataFetcher from './api-service/data-fetcher'
+import DataFetcher from '../../api-service/data-fetcher'
 
 @Component({
   selector: 'app-root',
@@ -13,4 +13,5 @@ export class AppComponent {
 
   title = 'Våra recept';
   recipies = this.dataFetcher.recipes;
+  tags = this.dataFetcher.tags;
 }

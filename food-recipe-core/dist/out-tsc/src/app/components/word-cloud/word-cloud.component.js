@@ -8,23 +8,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
-import DataFetcher from './api-service/data-fetcher';
-var AppComponent = /** @class */ (function () {
-    function AppComponent(dataFetcher) {
+import DataFetcher from '../../api-service/data-fetcher';
+var WordCloudComponent = /** @class */ (function () {
+    function WordCloudComponent(dataFetcher) {
         this.dataFetcher = dataFetcher;
         this.title = 'Våra recept';
         this.recipies = this.dataFetcher.recipes;
         this.tags = this.dataFetcher.tags;
     }
-    AppComponent = __decorate([
+    WordCloudComponent = __decorate([
         Component({
-            selector: 'app-root',
-            templateUrl: './app.component.html',
-            styleUrls: ['./app.component.less'],
+            selector: 'word-cloud',
+            templateUrl: './word-cloud.component.html',
+            styleUrls: ['./word-cloud.component.less'],
         }),
         __metadata("design:paramtypes", [DataFetcher])
-    ], AppComponent);
-    return AppComponent;
+    ], WordCloudComponent);
+    return WordCloudComponent;
 }());
-export { AppComponent };
-//# sourceMappingURL=app.component.js.map
+export { WordCloudComponent };
+//# sourceMappingURL=word-cloud.component.js.map

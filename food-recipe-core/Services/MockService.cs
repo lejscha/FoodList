@@ -1,24 +1,41 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using recipe_food.Models;
+using System.Linq;
 
 namespace recipe_food.Services
 {
-    internal class MockService : IMockService
+  internal class MockService : IMockService
+  {
+    public List<Recipe> GetRecipiesMock()
     {
-        public List<Recipe> GetRecipiesMock()
-        {
-            return GenerateMockList();
-        }
+      return GenerateMockList();
+    }
 
-        public List<Recipe> GetRecipiesByTagsMock()
-        {
-            return GenerateMockList();
-        }
+    public List<Recipe> GetRecipiesByTagsMock()
+    {
+      return GenerateMockList();
+    }
 
-        public List<Recipe> GenerateMockList()
+    public List<Tag> GetTagsMock()
+    {
+      var allRecipies = GenerateMockList();
+      var allTags = new List<Tag>();
+
+      foreach (var recipe in allRecipies)
+      {
+        foreach (var tag in recipe.Tags)
         {
-            return new List<Recipe>
+          allTags.Add(tag);
+        }
+      }
+
+      return allTags;
+    }
+
+    public List<Recipe> GenerateMockList()
+    {
+      return new List<Recipe>
             {
                 new Recipe
                 {
@@ -43,22 +60,27 @@ namespace recipe_food.Services
                     {
                        new Tag
                        {
+                            Id = 1,
                             Name = "Köttfärs"
                        },
                         new Tag
                        {
+                            Id = 2,
                             Name = "Kött"
                        },
                          new Tag
                        {
+                            Id = 3,
                             Name = "Pasta"
                        },
                           new Tag
                        {
+                            Id = 4,
                             Name = "Spaghetti"
                        },
                            new Tag
                        {
+                            Id = 5,
                             Name = "Vardagsmat"
                        },
                     }
@@ -87,23 +109,76 @@ namespace recipe_food.Services
                     {
                        new Tag
                        {
+                            Id = 6,
                             Name = "Pizza"
                        },
                         new Tag
                        {
+                            Id = 7,
                             Name = "Quorn"
                        },
-                         new Tag
+                        new Tag
                        {
+                            Id = 8,
                             Name = "Helgmat"
                        },
-                          new Tag
+                        new Tag
                        {
+                            Id = 9,
+                            Name = "Pizzadeg"
+                       },
+                        new Tag
+                       {
+                            Id = 1,
+                            Name = "Köttfärs"
+                       }
+                    }
+                },
+                         new Recipe
+                {
+                    Id = Guid.NewGuid(),
+                    RecipeName = "TEST",
+                    Cooking = "TEST TEST  TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST",
+                    Ingridients = new List<string>{
+                        "1 rödlök",
+                        "300 g quornfärs",
+                        "2 tsk torkad oregano",
+                        "2 msk olivolja",
+                        "salt",
+                        "svartpeppar",
+                        "3 msk tomatpesto",
+                        "200 g färskost med vitlök & örter",
+                        "1 dl crème fraiche",
+                        "2 tomater",
+                        "2 pizzabottnar (à 250 g)",
+                        "2 dl riven ost"
+                    },
+                    ImageUrl = new Uri("https://www.ica.se//icase.azureedge.net/imagevaultfiles/id_63016/cf_259/pizza-715457.jpg"),
+                    Tags = new List<Tag>
+                    {
+                       new Tag
+                       {
+                            Id = 6,
+                            Name = "Pizza"
+                       },
+                        new Tag
+                       {
+                            Id = 7,
+                            Name = "Quorn"
+                       },
+                        new Tag
+                       {
+                            Id = 8,
+                            Name = "Helgmat"
+                       },
+                        new Tag
+                       {
+                            Id = 9,
                             Name = "Pizzadeg"
                        }
                     }
                 }
             };
-        }
     }
+  }
 }

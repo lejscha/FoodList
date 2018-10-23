@@ -45,6 +45,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import Recipe from '../models/Recipe';
+import Tag from '../models/Tag';
 var FetchDataService = /** @class */ (function () {
     function FetchDataService(http) {
         this.http = http;
@@ -56,6 +57,18 @@ var FetchDataService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.http.get(this.myurl).toPromise().then(function (data) {
                             return data.map(function (r) { return new Recipe(r); });
+                        })];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    FetchDataService.prototype.getTags = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.http.get("api/RecipeApi/GetTags").toPromise().then(function (data) {
+                            return data.map(function (r) { return new Tag(r); });
                         })];
                     case 1: return [2 /*return*/, _a.sent()];
                 }

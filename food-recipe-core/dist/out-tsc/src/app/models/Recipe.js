@@ -1,10 +1,11 @@
 var Recipe = /** @class */ (function () {
     function Recipe(data) {
-        this.id = data.Id;
-        this.recipeName = data.recipeName;
-        this.ingridients = data.ingredients;
+        this.id = data.id;
+        this.name = data.recipeName;
+        this.ingridients = data.ingridients;
         this.cooking = data.cooking;
         this.imageUrl = data.imageUrl;
+        this.tags = data.tags;
     }
     return Recipe;
 }());

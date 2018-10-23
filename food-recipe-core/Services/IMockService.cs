@@ -1,4 +1,4 @@
-﻿using recipe_food.Models;
+using recipe_food.Models;
 using System.Collections.Generic;
 
 namespace recipe_food.Services
@@ -8,5 +8,8 @@ namespace recipe_food.Services
         List<Recipe> GetRecipiesMock();
 
         List<Recipe> GetRecipiesByTagsMock();
-    }
+
+        List<Tag> GetTagsMock();
+
+  }
 }

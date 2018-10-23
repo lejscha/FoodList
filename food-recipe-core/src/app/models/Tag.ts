@@ -1,6 +1,12 @@
+export class Tag {
 
+  constructor(data: any) {
+    this.id = data.id;
+    this.name = data.name;
+  }
 
-export default class Tag {
   id: string;
   name: string;
 }
+
+export default Tag;

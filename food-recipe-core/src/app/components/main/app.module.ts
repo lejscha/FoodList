@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { FetchDataService } from './api-service/data-fetcher-service'
-import DataFetcher from './api-service/data-fetcher'
+import { FetchDataService } from '../../api-service/data-fetcher-service'
+import DataFetcher from '../../api-service/data-fetcher'
 
 
 

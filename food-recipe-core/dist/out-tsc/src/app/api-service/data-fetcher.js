@@ -48,6 +48,7 @@ var DataFetcher = /** @class */ (function () {
     function DataFetcher(dataFetcherService) {
         this.dataFetcherService = dataFetcherService;
         this.recipes = this.getRecipies();
+        this.tags = this.getTags();
     }
     DataFetcher.prototype.getRecipies = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -58,6 +59,19 @@ var DataFetcher = /** @class */ (function () {
                     case 1:
                         _a.sent();
                         return [2 /*return*/, this.recipes = recipes];
+                }
+            });
+        });
+    };
+    DataFetcher.prototype.getTags = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var tags;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.dataFetcherService.getTags().then(function (data) { return tags = data; })];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/, this.tags = tags];
                 }
             });
         });

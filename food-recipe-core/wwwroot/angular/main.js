@@ -36,6 +36,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _models_Recipe__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../models/Recipe */ "./src/app/models/Recipe.ts");
+/* harmony import */ var _models_Tag__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../models/Tag */ "./src/app/models/Tag.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -83,6 +84,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var FetchDataService = /** @class */ (function () {
     function FetchDataService(http) {
         this.http = http;
@@ -94,6 +96,18 @@ var FetchDataService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.http.get(this.myurl).toPromise().then(function (data) {
                             return data.map(function (r) { return new _models_Recipe__WEBPACK_IMPORTED_MODULE_2__["default"](r); });
+                        })];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    FetchDataService.prototype.getTags = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.http.get("api/RecipeApi/GetTags").toPromise().then(function (data) {
+                            return data.map(function (r) { return new _models_Tag__WEBPACK_IMPORTED_MODULE_3__["default"](r); });
                         })];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
@@ -173,6 +187,7 @@ var DataFetcher = /** @class */ (function () {
     function DataFetcher(dataFetcherService) {
         this.dataFetcherService = dataFetcherService;
         this.recipes = this.getRecipies();
+        this.tags = this.getTags();
     }
     DataFetcher.prototype.getRecipies = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -183,6 +198,19 @@ var DataFetcher = /** @class */ (function () {
                     case 1:
                         _a.sent();
                         return [2 /*return*/, this.recipes = recipes];
+                }
+            });
+        });
+    };
+    DataFetcher.prototype.getTags = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var tags;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.dataFetcherService.getTags().then(function (data) { return tags = data; })];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/, this.tags = tags];
                 }
             });
         });
@@ -199,32 +227,32 @@ var DataFetcher = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/app.component.html":
-/*!************************************!*\
-  !*** ./src/app/app.component.html ***!
-  \************************************/
+/***/ "./src/app/components/main/app.component.html":
+/*!****************************************************!*\
+  !*** ./src/app/components/main/app.component.html ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngFor=\"let recipe of recipies | async\" class=\"recipe-container\" style=\"background-color: white\">\r\n  <div>\r\n    <h3>\r\n      <strong>{{recipe.name}}</strong>\r\n    </h3>\r\n  </div>\r\n\r\n  <div class=\"row\" style=\"margin-bottom: 1em;\">\r\n    <div class=\"col-md-4\">\r\n      <img src=\"{{recipe.imageUrl}}\" style=\"height:100%; width:100%;\" />\r\n    </div>\r\n    <div class=\"col-md-8\">\r\n\r\n      <div *ngFor=\"let tag of recipe.tags\" class=\"btn btn-default btn-md\" style=\"margin:5px;\">\r\n        {{tag.name}}\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-md-4\">\r\n      <h4>\r\n        <strong>Ingridienser</strong>\r\n      </h4>\r\n      <ul *ngFor=\"let ingridient of recipe.ingridients\">\r\n        <li>{{ingridient}}</li>\r\n      </ul>\r\n    </div>\r\n    <div class=\"col-md-8\" style=\"border-left:1px solid #eee\">\r\n      <h4>\r\n        <strong>Tillagning</strong>\r\n      </h4>\r\n      <div>\r\n        <p>{{recipe.cooking}}</p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <hr />\r\n</div>\r\n\r\n\r\n\r\n<!--<div id=\"myCarousel\" class=\"carousel slide\" data-ride=\"carousel\" data-interval=\"6000\">\r\n  <ol class=\"carousel-indicators\">\r\n    <li data-target=\"#myCarousel\" data-slide-to=\"0\" class=\"active\"></li>\r\n    <li data-target=\"#myCarousel\" data-slide-to=\"1\"></li>\r\n    <li data-target=\"#myCarousel\" data-slide-to=\"2\"></li>\r\n  </ol>\r\n  <div class=\"carousel-inner\" role=\"listbox\">\r\n    <div class=\"item active\">\r\n      <img src=\"~/images/banner1.svg\" alt=\"ASP.NET\" class=\"img-responsive\" />\r\n      <div class=\"carousel-caption\" role=\"option\">\r\n        <p>\r\n          Learn how to build ASP.NET apps that can run anywhere.\r\n          <a class=\"btn btn-default\" href=\"https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409\">\r\n            Learn More\r\n          </a>\r\n        </p>\r\n      </div>\r\n    </div>\r\n    <div class=\"item\">\r\n      <img src=\"https://www.ica.se//icase.azureedge.net/imagevaultfiles/id_189185/cf_259/pizza-med-salami-och-skinka-familj-724617.jpg\" alt=\"Visual Studio\" class=\"img-responsive\" />\r\n      <div class=\"carousel-caption\" role=\"option\">\r\n        <p>\r\n          There are powerful new features in Visual Studio for building modern web apps.\r\n          <a class=\"btn btn-default\" href=\"https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409\">\r\n            Learn More\r\n          </a>\r\n        </p>\r\n      </div>\r\n    </div>\r\n    <div class=\"item\">\r\n      <img src=\"~/images/banner3.svg\" alt=\"Microsoft Azure\" class=\"img-responsive\" />\r\n      <div class=\"carousel-caption\" role=\"option\">\r\n        <p>\r\n          Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.\r\n          <a class=\"btn btn-default\" href=\"https://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409\">\r\n            Learn More\r\n          </a>\r\n        </p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <a class=\"left carousel-control\" href=\"#myCarousel\" role=\"button\" data-slide=\"prev\">\r\n    <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span>\r\n    <span class=\"sr-only\">Previous</span>\r\n  </a>\r\n  <a class=\"right carousel-control\" href=\"#myCarousel\" role=\"button\" data-slide=\"next\">\r\n    <span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span>\r\n    <span class=\"sr-only\">Next</span>\r\n  </a>\r\n</div>-->\r\n"
+module.exports = "\r\n<div *ngFor=\"let tag of tags | async\">\r\n  <p>{{tag.name}}</p>\r\n</div>\r\n\r\n\r\n<div *ngFor=\"let recipe of recipies | async\" class=\"recipe-container\" style=\"background-color: white; border-radius:15%; border-right: 1px solid black; border-left: 1px solid black; padding-left:120px; padding-right:120px;\">\r\n  <div>\r\n    <h3>\r\n      <strong>{{recipe.name}}</strong>\r\n    </h3>\r\n  </div>\r\n\r\n  <div class=\"row\" style=\"margin-bottom: 1em;\">\r\n    <div class=\"col-md-4\" style=\"border-left:1px solid black; border-radius:50%;\">\r\n      <img src=\"{{recipe.imageUrl}}\" style=\"height:100%; width:100%; border-radius:50%;\" />\r\n      <hr />\r\n    </div>\r\n\r\n    <div class=\"col-md-8\">\r\n      <div *ngFor=\"let tag of recipe.tags\" class=\"btn btn-default btn-md\" style=\"margin:5px;\">\r\n        {{tag.name}}\r\n      </div>\r\n\r\n    </div>\r\n\r\n  </div>\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-md-4\">\r\n      <h4>\r\n        <strong>Ingridienser</strong>\r\n      </h4>\r\n      <ul *ngFor=\"let ingridient of recipe.ingridients\">\r\n        <li>{{ingridient}}</li>\r\n      </ul>\r\n    </div>\r\n    <div class=\"col-md-8\" style=\"border-left:1px solid #eee\">\r\n      <h4>\r\n        <strong>Tillagning</strong>\r\n      </h4>\r\n      <div>\r\n        <p>{{recipe.cooking}}</p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <hr />\r\n</div>\r\n\r\n\r\n\r\n<!--<div id=\"myCarousel\" class=\"carousel slide\" data-ride=\"carousel\" data-interval=\"6000\">\r\n  <ol class=\"carousel-indicators\">\r\n    <li data-target=\"#myCarousel\" data-slide-to=\"0\" class=\"active\"></li>\r\n    <li data-target=\"#myCarousel\" data-slide-to=\"1\"></li>\r\n    <li data-target=\"#myCarousel\" data-slide-to=\"2\"></li>\r\n  </ol>\r\n  <div class=\"carousel-inner\" role=\"listbox\">\r\n    <div class=\"item active\">\r\n      <img src=\"~/images/banner1.svg\" alt=\"ASP.NET\" class=\"img-responsive\" />\r\n      <div class=\"carousel-caption\" role=\"option\">\r\n        <p>\r\n          Learn how to build ASP.NET apps that can run anywhere.\r\n          <a class=\"btn btn-default\" href=\"https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409\">\r\n            Learn More\r\n          </a>\r\n        </p>\r\n      </div>\r\n    </div>\r\n    <div class=\"item\">\r\n      <img src=\"https://www.ica.se//icase.azureedge.net/imagevaultfiles/id_189185/cf_259/pizza-med-salami-och-skinka-familj-724617.jpg\" alt=\"Visual Studio\" class=\"img-responsive\" />\r\n      <div class=\"carousel-caption\" role=\"option\">\r\n        <p>\r\n          There are powerful new features in Visual Studio for building modern web apps.\r\n          <a class=\"btn btn-default\" href=\"https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409\">\r\n            Learn More\r\n          </a>\r\n        </p>\r\n      </div>\r\n    </div>\r\n    <div class=\"item\">\r\n      <img src=\"~/images/banner3.svg\" alt=\"Microsoft Azure\" class=\"img-responsive\" />\r\n      <div class=\"carousel-caption\" role=\"option\">\r\n        <p>\r\n          Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.\r\n          <a class=\"btn btn-default\" href=\"https://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409\">\r\n            Learn More\r\n          </a>\r\n        </p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <a class=\"left carousel-control\" href=\"#myCarousel\" role=\"button\" data-slide=\"prev\">\r\n    <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span>\r\n    <span class=\"sr-only\">Previous</span>\r\n  </a>\r\n  <a class=\"right carousel-control\" href=\"#myCarousel\" role=\"button\" data-slide=\"next\">\r\n    <span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span>\r\n    <span class=\"sr-only\">Next</span>\r\n  </a>\r\n</div>-->\r\n"
 
 /***/ }),
 
-/***/ "./src/app/app.component.less":
-/*!************************************!*\
-  !*** ./src/app/app.component.less ***!
-  \************************************/
+/***/ "./src/app/components/main/app.component.less":
+/*!****************************************************!*\
+  !*** ./src/app/components/main/app.component.less ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQubGVzcyJ9 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbWFpbi9hcHAuY29tcG9uZW50Lmxlc3MifQ== */"
 
 /***/ }),
 
-/***/ "./src/app/app.component.ts":
-/*!**********************************!*\
-  !*** ./src/app/app.component.ts ***!
-  \**********************************/
+/***/ "./src/app/components/main/app.component.ts":
+/*!**************************************************!*\
+  !*** ./src/app/components/main/app.component.ts ***!
+  \**************************************************/
 /*! exports provided: AppComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -232,7 +260,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _api_service_data_fetcher__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./api-service/data-fetcher */ "./src/app/api-service/data-fetcher.ts");
+/* harmony import */ var _api_service_data_fetcher__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../api-service/data-fetcher */ "./src/app/api-service/data-fetcher.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -249,12 +277,13 @@ var AppComponent = /** @class */ (function () {
         this.dataFetcher = dataFetcher;
         this.title = 'Våra recept';
         this.recipies = this.dataFetcher.recipes;
+        this.tags = this.dataFetcher.tags;
     }
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-root',
-            template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
-            styles: [__webpack_require__(/*! ./app.component.less */ "./src/app/app.component.less")],
+            template: __webpack_require__(/*! ./app.component.html */ "./src/app/components/main/app.component.html"),
+            styles: [__webpack_require__(/*! ./app.component.less */ "./src/app/components/main/app.component.less")],
         }),
         __metadata("design:paramtypes", [_api_service_data_fetcher__WEBPACK_IMPORTED_MODULE_1__["default"]])
     ], AppComponent);
@@ -265,10 +294,10 @@ var AppComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/app.module.ts":
-/*!*******************************!*\
-  !*** ./src/app/app.module.ts ***!
-  \*******************************/
+/***/ "./src/app/components/main/app.module.ts":
+/*!***********************************************!*\
+  !*** ./src/app/components/main/app.module.ts ***!
+  \***********************************************/
 /*! exports provided: AppModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -278,9 +307,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _api_service_data_fetcher_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./api-service/data-fetcher-service */ "./src/app/api-service/data-fetcher-service.ts");
-/* harmony import */ var _api_service_data_fetcher__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./api-service/data-fetcher */ "./src/app/api-service/data-fetcher.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "./src/app/components/main/app.component.ts");
+/* harmony import */ var _api_service_data_fetcher_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../api-service/data-fetcher-service */ "./src/app/api-service/data-fetcher-service.ts");
+/* harmony import */ var _api_service_data_fetcher__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../api-service/data-fetcher */ "./src/app/api-service/data-fetcher.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -346,6 +375,29 @@ var Recipe = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/models/Tag.ts":
+/*!*******************************!*\
+  !*** ./src/app/models/Tag.ts ***!
+  \*******************************/
+/*! exports provided: Tag, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Tag", function() { return Tag; });
+var Tag = /** @class */ (function () {
+    function Tag(data) {
+        this.id = data.id;
+        this.name = data.name;
+    }
+    return Tag;
+}());
+
+/* harmony default export */ __webpack_exports__["default"] = (Tag);
+
+
+/***/ }),
+
 /***/ "./src/environments/environment.ts":
 /*!*****************************************!*\
   !*** ./src/environments/environment.ts ***!
@@ -385,7 +437,7 @@ var environment = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser-dynamic */ "./node_modules/@angular/platform-browser-dynamic/fesm5/platform-browser-dynamic.js");
-/* harmony import */ var _app_app_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app/app.module */ "./src/app/app.module.ts");
+/* harmony import */ var _app_components_main_app_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app/components/main/app.module */ "./src/app/components/main/app.module.ts");
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./environments/environment */ "./src/environments/environment.ts");
 
 
@@ -394,7 +446,7 @@ __webpack_require__.r(__webpack_exports__);
 if (_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].production) {
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["enableProdMode"])();
 }
-Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_2__["AppModule"])
+Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformBrowserDynamic"])().bootstrapModule(_app_components_main_app_module__WEBPACK_IMPORTED_MODULE_2__["AppModule"])
     .catch(function (err) { return console.error(err); });
 
 
