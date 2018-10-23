@@ -12,9 +12,23 @@ import DataFetcher from '../../api-service/data-fetcher';
 var WordCloudComponent = /** @class */ (function () {
     function WordCloudComponent(dataFetcher) {
         this.dataFetcher = dataFetcher;
-        this.title = 'Våra recept';
-        this.recipies = this.dataFetcher.recipes;
-        this.tags = this.dataFetcher.tags;
+        this.options = {
+            // if width is between 0 and 1 it will be set to the size of the upper element multiplied by the value 
+            width: 1000,
+            height: 400,
+            overflow: false,
+        };
+        //data: CloudData[] = [
+        //  { text: 'WeiEEEolor', weight: 8, link: 'https://google.com', color: '#ffaaee' },
+        //  { text: 'WeightFDSFSAFDSAFSlor', weight: 4, link: 'https://google.com', color: '#ffaaee' },
+        //  { text: 'WeightFDSFSAFDSAFSDFEEEolor', weight: 14, link: 'https://google.com', color: '#ffaaee' },
+        //  { text: 'WeightFDSFSAFSDFEEEolor', weight: 2, link: 'https://google.com', color: '#ffaaee' },
+        //  { text: 'WeigSr', weight: 3, link: 'https://google.com', color: '#ffaaee' },
+        //  { text: 'WeightFDDFEEEolor', weight: 9, link: 'https://google.com', color: '#ffaaee' },
+        //  { text: 'WeightFDSFSAEEolor', weight: 20, link: 'https://google.com', color: '#ffaaee' },
+        //  // ...
+        //];
+        this.data = this.dataFetcher.getTagsForCloud();
     }
     WordCloudComponent = __decorate([
         Component({

@@ -10,17 +10,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { WordCloudComponent } from './word-cloud.component';
 import { FetchDataService } from '../../api-service/data-fetcher-service';
 import DataFetcher from '../../api-service/data-fetcher';
-var AppModule = /** @class */ (function () {
-    function AppModule() {
+import { TagCloudModule } from 'angular-tag-cloud-module';
+var WordCloudModule = /** @class */ (function () {
+    function WordCloudModule() {
     }
-    AppModule = __decorate([
+    WordCloudModule = __decorate([
         NgModule({
             declarations: [
                 WordCloudComponent
             ],
             imports: [
                 BrowserModule,
-                HttpClientModule
+                HttpClientModule,
+                TagCloudModule
             ],
             providers: [
                 DataFetcher,
@@ -28,8 +30,8 @@ var AppModule = /** @class */ (function () {
             ],
             bootstrap: [WordCloudComponent]
         })
-    ], AppModule);
-    return AppModule;
+    ], WordCloudModule);
+    return WordCloudModule;
 }());
-export { AppModule };
+export { WordCloudModule };
 //# sourceMappingURL=word-cloud.module.js.map

@@ -4,8 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { WordCloudComponent } from './word-cloud.component';
 import { FetchDataService } from '../../api-service/data-fetcher-service'
 import DataFetcher from '../../api-service/data-fetcher'
-
-
+import { TagCloudModule } from 'angular-tag-cloud-module';
 
 @NgModule({
   declarations: [
@@ -13,7 +12,8 @@ import DataFetcher from '../../api-service/data-fetcher'
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    TagCloudModule
   ],
   providers: [
     DataFetcher,
@@ -22,4 +22,4 @@ import DataFetcher from '../../api-service/data-fetcher'
   bootstrap: [WordCloudComponent]
 })
 
-export class AppModule { }
+export class WordCloudModule { }

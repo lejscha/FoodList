@@ -7,6 +7,11 @@ export class Tag {
 
   id: string;
   name: string;
+
+
+
+
+  text: string;
 }
 
 export default Tag;

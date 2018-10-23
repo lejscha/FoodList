@@ -37,6 +37,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _models_Recipe__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../models/Recipe */ "./src/app/models/Recipe.ts");
 /* harmony import */ var _models_Tag__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../models/Tag */ "./src/app/models/Tag.ts");
+/* harmony import */ var _models_CloudData__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../models/CloudData */ "./src/app/models/CloudData.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -85,6 +86,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var FetchDataService = /** @class */ (function () {
     function FetchDataService(http) {
         this.http = http;
@@ -108,6 +110,19 @@ var FetchDataService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.http.get("api/RecipeApi/GetTags").toPromise().then(function (data) {
                             return data.map(function (r) { return new _models_Tag__WEBPACK_IMPORTED_MODULE_3__["default"](r); });
+                        })];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    FetchDataService.prototype.getTagsForCloud = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.http.get("api/RecipeApi/GetTags").toPromise().then(function (data) {
+                            debugger;
+                            return data.map(function (r) { return new _models_CloudData__WEBPACK_IMPORTED_MODULE_4__["CloudDataModel"](r); });
                         })];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
@@ -215,6 +230,16 @@ var DataFetcher = /** @class */ (function () {
             });
         });
     };
+    DataFetcher.prototype.getTagsForCloud = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.dataFetcherService.getTagsForCloud()];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
     DataFetcher = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
         __metadata("design:paramtypes", [_data_fetcher_service__WEBPACK_IMPORTED_MODULE_0__["FetchDataService"]])
@@ -234,7 +259,7 @@ var DataFetcher = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div *ngFor=\"let tag of tags | async\">\r\n  <p>{{tag.name}}</p>\r\n</div>\r\n\r\n\r\n<div *ngFor=\"let recipe of recipies | async\" class=\"recipe-container\" style=\"background-color: white; border-radius:15%; border-right: 1px solid black; border-left: 1px solid black; padding-left:120px; padding-right:120px;\">\r\n  <div>\r\n    <h3>\r\n      <strong>{{recipe.name}}</strong>\r\n    </h3>\r\n  </div>\r\n\r\n  <div class=\"row\" style=\"margin-bottom: 1em;\">\r\n    <div class=\"col-md-4\" style=\"border-left:1px solid black; border-radius:50%;\">\r\n      <img src=\"{{recipe.imageUrl}}\" style=\"height:100%; width:100%; border-radius:50%;\" />\r\n      <hr />\r\n    </div>\r\n\r\n    <div class=\"col-md-8\">\r\n      <div *ngFor=\"let tag of recipe.tags\" class=\"btn btn-default btn-md\" style=\"margin:5px;\">\r\n        {{tag.name}}\r\n      </div>\r\n\r\n    </div>\r\n\r\n  </div>\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-md-4\">\r\n      <h4>\r\n        <strong>Ingridienser</strong>\r\n      </h4>\r\n      <ul *ngFor=\"let ingridient of recipe.ingridients\">\r\n        <li>{{ingridient}}</li>\r\n      </ul>\r\n    </div>\r\n    <div class=\"col-md-8\" style=\"border-left:1px solid #eee\">\r\n      <h4>\r\n        <strong>Tillagning</strong>\r\n      </h4>\r\n      <div>\r\n        <p>{{recipe.cooking}}</p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <hr />\r\n</div>\r\n\r\n\r\n\r\n<!--<div id=\"myCarousel\" class=\"carousel slide\" data-ride=\"carousel\" data-interval=\"6000\">\r\n  <ol class=\"carousel-indicators\">\r\n    <li data-target=\"#myCarousel\" data-slide-to=\"0\" class=\"active\"></li>\r\n    <li data-target=\"#myCarousel\" data-slide-to=\"1\"></li>\r\n    <li data-target=\"#myCarousel\" data-slide-to=\"2\"></li>\r\n  </ol>\r\n  <div class=\"carousel-inner\" role=\"listbox\">\r\n    <div class=\"item active\">\r\n      <img src=\"~/images/banner1.svg\" alt=\"ASP.NET\" class=\"img-responsive\" />\r\n      <div class=\"carousel-caption\" role=\"option\">\r\n        <p>\r\n          Learn how to build ASP.NET apps that can run anywhere.\r\n          <a class=\"btn btn-default\" href=\"https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409\">\r\n            Learn More\r\n          </a>\r\n        </p>\r\n      </div>\r\n    </div>\r\n    <div class=\"item\">\r\n      <img src=\"https://www.ica.se//icase.azureedge.net/imagevaultfiles/id_189185/cf_259/pizza-med-salami-och-skinka-familj-724617.jpg\" alt=\"Visual Studio\" class=\"img-responsive\" />\r\n      <div class=\"carousel-caption\" role=\"option\">\r\n        <p>\r\n          There are powerful new features in Visual Studio for building modern web apps.\r\n          <a class=\"btn btn-default\" href=\"https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409\">\r\n            Learn More\r\n          </a>\r\n        </p>\r\n      </div>\r\n    </div>\r\n    <div class=\"item\">\r\n      <img src=\"~/images/banner3.svg\" alt=\"Microsoft Azure\" class=\"img-responsive\" />\r\n      <div class=\"carousel-caption\" role=\"option\">\r\n        <p>\r\n          Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.\r\n          <a class=\"btn btn-default\" href=\"https://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409\">\r\n            Learn More\r\n          </a>\r\n        </p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <a class=\"left carousel-control\" href=\"#myCarousel\" role=\"button\" data-slide=\"prev\">\r\n    <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span>\r\n    <span class=\"sr-only\">Previous</span>\r\n  </a>\r\n  <a class=\"right carousel-control\" href=\"#myCarousel\" role=\"button\" data-slide=\"next\">\r\n    <span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span>\r\n    <span class=\"sr-only\">Next</span>\r\n  </a>\r\n</div>-->\r\n"
+module.exports = "\r\n\r\n\r\n<!--<div *ngFor=\"let tag of tags | async\">\r\n  <p>{{tag.name}}</p>\r\n</div>-->\r\n\r\n\r\n<div *ngFor=\"let recipe of recipies | async\" class=\"recipe-container\" style=\"background-color: white; border-radius:15%; border-right: 1px solid black; border-left: 1px solid black; padding-left:120px; padding-right:120px;\">\r\n  <div>\r\n    <h3>\r\n      <strong>{{recipe.name}}</strong>\r\n    </h3>\r\n  </div>\r\n\r\n  <div class=\"row\" style=\"margin-bottom: 1em;\">\r\n    <div class=\"col-md-4\" style=\"border-left:1px solid black; border-radius:50%;\">\r\n      <img src=\"{{recipe.imageUrl}}\" style=\"height:100%; width:100%; border-radius:50%;\" />\r\n      <hr />\r\n    </div>\r\n\r\n    <div class=\"col-md-8\">\r\n      <div *ngFor=\"let tag of recipe.tags\" class=\"btn btn-default btn-md\" style=\"margin:5px;\">\r\n        {{tag.name}}\r\n      </div>\r\n\r\n    </div>\r\n\r\n  </div>\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-md-4\">\r\n      <h4>\r\n        <strong>Ingridienser</strong>\r\n      </h4>\r\n      <ul *ngFor=\"let ingridient of recipe.ingridients\">\r\n        <li>{{ingridient}}</li>\r\n      </ul>\r\n    </div>\r\n    <div class=\"col-md-8\" style=\"border-left:1px solid #eee\">\r\n      <h4>\r\n        <strong>Tillagning</strong>\r\n      </h4>\r\n      <div>\r\n        <p>{{recipe.cooking}}</p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <hr />\r\n</div>\r\n\r\n\r\n\r\n<!--<div id=\"myCarousel\" class=\"carousel slide\" data-ride=\"carousel\" data-interval=\"6000\">\r\n  <ol class=\"carousel-indicators\">\r\n    <li data-target=\"#myCarousel\" data-slide-to=\"0\" class=\"active\"></li>\r\n    <li data-target=\"#myCarousel\" data-slide-to=\"1\"></li>\r\n    <li data-target=\"#myCarousel\" data-slide-to=\"2\"></li>\r\n  </ol>\r\n  <div class=\"carousel-inner\" role=\"listbox\">\r\n    <div class=\"item active\">\r\n      <img src=\"~/images/banner1.svg\" alt=\"ASP.NET\" class=\"img-responsive\" />\r\n      <div class=\"carousel-caption\" role=\"option\">\r\n        <p>\r\n          Learn how to build ASP.NET apps that can run anywhere.\r\n          <a class=\"btn btn-default\" href=\"https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409\">\r\n            Learn More\r\n          </a>\r\n        </p>\r\n      </div>\r\n    </div>\r\n    <div class=\"item\">\r\n      <img src=\"https://www.ica.se//icase.azureedge.net/imagevaultfiles/id_189185/cf_259/pizza-med-salami-och-skinka-familj-724617.jpg\" alt=\"Visual Studio\" class=\"img-responsive\" />\r\n      <div class=\"carousel-caption\" role=\"option\">\r\n        <p>\r\n          There are powerful new features in Visual Studio for building modern web apps.\r\n          <a class=\"btn btn-default\" href=\"https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409\">\r\n            Learn More\r\n          </a>\r\n        </p>\r\n      </div>\r\n    </div>\r\n    <div class=\"item\">\r\n      <img src=\"~/images/banner3.svg\" alt=\"Microsoft Azure\" class=\"img-responsive\" />\r\n      <div class=\"carousel-caption\" role=\"option\">\r\n        <p>\r\n          Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.\r\n          <a class=\"btn btn-default\" href=\"https://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409\">\r\n            Learn More\r\n          </a>\r\n        </p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <a class=\"left carousel-control\" href=\"#myCarousel\" role=\"button\" data-slide=\"prev\">\r\n    <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span>\r\n    <span class=\"sr-only\">Previous</span>\r\n  </a>\r\n  <a class=\"right carousel-control\" href=\"#myCarousel\" role=\"button\" data-slide=\"next\">\r\n    <span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span>\r\n    <span class=\"sr-only\">Next</span>\r\n  </a>\r\n</div>-->\r\n"
 
 /***/ }),
 
@@ -322,17 +347,18 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+//import { WordCloudComponent } from '../../components/word-cloud/word-cloud.component'
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"]
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"],
             ],
             providers: [
                 _api_service_data_fetcher__WEBPACK_IMPORTED_MODULE_5__["default"],
@@ -344,6 +370,167 @@ var AppModule = /** @class */ (function () {
     return AppModule;
 }());
 
+
+
+/***/ }),
+
+/***/ "./src/app/components/word-cloud/word-cloud.component.html":
+/*!*****************************************************************!*\
+  !*** ./src/app/components/word-cloud/word-cloud.component.html ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div>\r\n  <angular-tag-cloud [data]=\"data | async\"\r\n                     [width]=\"options.width\"\r\n                     [height]=\"options.height\"\r\n                     [overflow]=\"options.overflow\">\r\n  </angular-tag-cloud>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/components/word-cloud/word-cloud.component.less":
+/*!*****************************************************************!*\
+  !*** ./src/app/components/word-cloud/word-cloud.component.less ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "#word-cloud {\n  height: 100vh;\n  width: 100vw;\n  margin: 0 auto;\n}\nbody,\nhtml {\n  margin: 0;\n  padding: 0;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy93b3JkLWNsb3VkL0M6L0dyZWdlci9yZXBvcy9mb29kLXJlY2lwZS1jb3JlL2Zvb2QtcmVjaXBlLWNvcmUvc3JjL2FwcC9jb21wb25lbnRzL3dvcmQtY2xvdWQvd29yZC1jbG91ZC5jb21wb25lbnQubGVzcyIsInNyYy9hcHAvY29tcG9uZW50cy93b3JkLWNsb3VkL3dvcmQtY2xvdWQuY29tcG9uZW50Lmxlc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxjQUFBO0VBQ0EsYUFBQTtFQUNBLGVBQUE7Q0NDRDtBREVEOztFQUNFLFVBQUE7RUFDQSxXQUFBO0NDQ0QiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL3dvcmQtY2xvdWQvd29yZC1jbG91ZC5jb21wb25lbnQubGVzcyIsInNvdXJjZXNDb250ZW50IjpbIiN3b3JkLWNsb3VkIHtcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBtYXJnaW46IDAgYXV0bztcbn1cblxuYm9keSwgaHRtbCB7XG4gIG1hcmdpbjogMDtcbiAgcGFkZGluZzogMDtcbn1cbiIsIiN3b3JkLWNsb3VkIHtcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBtYXJnaW46IDAgYXV0bztcbn1cbmJvZHksXG5odG1sIHtcbiAgbWFyZ2luOiAwO1xuICBwYWRkaW5nOiAwO1xufVxuIl19 */"
+
+/***/ }),
+
+/***/ "./src/app/components/word-cloud/word-cloud.component.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/components/word-cloud/word-cloud.component.ts ***!
+  \***************************************************************/
+/*! exports provided: WordCloudComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WordCloudComponent", function() { return WordCloudComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _api_service_data_fetcher__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../api-service/data-fetcher */ "./src/app/api-service/data-fetcher.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var WordCloudComponent = /** @class */ (function () {
+    function WordCloudComponent(dataFetcher) {
+        this.dataFetcher = dataFetcher;
+        this.options = {
+            // if width is between 0 and 1 it will be set to the size of the upper element multiplied by the value 
+            width: 1000,
+            height: 400,
+            overflow: false,
+        };
+        //data: CloudData[] = [
+        //  { text: 'WeiEEEolor', weight: 8, link: 'https://google.com', color: '#ffaaee' },
+        //  { text: 'WeightFDSFSAFDSAFSlor', weight: 4, link: 'https://google.com', color: '#ffaaee' },
+        //  { text: 'WeightFDSFSAFDSAFSDFEEEolor', weight: 14, link: 'https://google.com', color: '#ffaaee' },
+        //  { text: 'WeightFDSFSAFSDFEEEolor', weight: 2, link: 'https://google.com', color: '#ffaaee' },
+        //  { text: 'WeigSr', weight: 3, link: 'https://google.com', color: '#ffaaee' },
+        //  { text: 'WeightFDDFEEEolor', weight: 9, link: 'https://google.com', color: '#ffaaee' },
+        //  { text: 'WeightFDSFSAEEolor', weight: 20, link: 'https://google.com', color: '#ffaaee' },
+        //  // ...
+        //];
+        this.data = this.dataFetcher.getTagsForCloud();
+    }
+    WordCloudComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'word-cloud',
+            template: __webpack_require__(/*! ./word-cloud.component.html */ "./src/app/components/word-cloud/word-cloud.component.html"),
+            styles: [__webpack_require__(/*! ./word-cloud.component.less */ "./src/app/components/word-cloud/word-cloud.component.less")],
+        }),
+        __metadata("design:paramtypes", [_api_service_data_fetcher__WEBPACK_IMPORTED_MODULE_1__["default"]])
+    ], WordCloudComponent);
+    return WordCloudComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/word-cloud/word-cloud.module.ts":
+/*!************************************************************!*\
+  !*** ./src/app/components/word-cloud/word-cloud.module.ts ***!
+  \************************************************************/
+/*! exports provided: WordCloudModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WordCloudModule", function() { return WordCloudModule; });
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _word_cloud_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./word-cloud.component */ "./src/app/components/word-cloud/word-cloud.component.ts");
+/* harmony import */ var _api_service_data_fetcher_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../api-service/data-fetcher-service */ "./src/app/api-service/data-fetcher-service.ts");
+/* harmony import */ var _api_service_data_fetcher__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../api-service/data-fetcher */ "./src/app/api-service/data-fetcher.ts");
+/* harmony import */ var angular_tag_cloud_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! angular-tag-cloud-module */ "./node_modules/angular-tag-cloud-module/fesm5/angular-tag-cloud-module.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+
+var WordCloudModule = /** @class */ (function () {
+    function WordCloudModule() {
+    }
+    WordCloudModule = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            declarations: [
+                _word_cloud_component__WEBPACK_IMPORTED_MODULE_3__["WordCloudComponent"]
+            ],
+            imports: [
+                _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"],
+                angular_tag_cloud_module__WEBPACK_IMPORTED_MODULE_6__["TagCloudModule"]
+            ],
+            providers: [
+                _api_service_data_fetcher__WEBPACK_IMPORTED_MODULE_5__["default"],
+                _api_service_data_fetcher_service__WEBPACK_IMPORTED_MODULE_4__["FetchDataService"]
+            ],
+            bootstrap: [_word_cloud_component__WEBPACK_IMPORTED_MODULE_3__["WordCloudComponent"]]
+        })
+    ], WordCloudModule);
+    return WordCloudModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/CloudData.ts":
+/*!*************************************!*\
+  !*** ./src/app/models/CloudData.ts ***!
+  \*************************************/
+/*! exports provided: CloudDataModel, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CloudDataModel", function() { return CloudDataModel; });
+var CloudDataModel = /** @class */ (function () {
+    function CloudDataModel(data) {
+        this.text = data.name;
+        this.weight = data.count;
+    }
+    return CloudDataModel;
+}());
+
+/* harmony default export */ __webpack_exports__["default"] = (CloudDataModel);
 
 
 /***/ }),
@@ -438,15 +625,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser-dynamic */ "./node_modules/@angular/platform-browser-dynamic/fesm5/platform-browser-dynamic.js");
 /* harmony import */ var _app_components_main_app_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app/components/main/app.module */ "./src/app/components/main/app.module.ts");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _app_components_word_cloud_word_cloud_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app/components/word-cloud/word-cloud.module */ "./src/app/components/word-cloud/word-cloud.module.ts");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./environments/environment */ "./src/environments/environment.ts");
 
 
 
 
-if (_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].production) {
+
+if (_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].production) {
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["enableProdMode"])();
 }
 Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformBrowserDynamic"])().bootstrapModule(_app_components_main_app_module__WEBPACK_IMPORTED_MODULE_2__["AppModule"])
+    .catch(function (err) { return console.error(err); });
+Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformBrowserDynamic"])().bootstrapModule(_app_components_word_cloud_word_cloud_module__WEBPACK_IMPORTED_MODULE_3__["WordCloudModule"])
     .catch(function (err) { return console.error(err); });
 
 

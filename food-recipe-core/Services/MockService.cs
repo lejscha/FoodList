@@ -177,7 +177,89 @@ namespace recipe_food.Services
                             Name = "Pizzadeg"
                        }
                     }
-                }
+                },
+                          new Recipe
+                {
+                    Id = Guid.NewGuid(),
+                    RecipeName = "Spaghetti & Köttfärssås",
+                    Cooking = "Bryn köttfärsen och grönsakerna i oljan, tillsätt tomatpuré och bryn med den ett tag. Tillsätt krossade tomater, hönsbuljong och soja, koka sakta 15 minuter, smaksätt med salt och peppar. Starta timer Koka spagetti enligt anvisningen på förpackningen. Till servering: Servera med riven parmesanost och körsbärstomater.",
+                    Ingridients = new List<string>{
+                        "500 g nötfärs",
+                        "1 gul lök (skalad och hackad)",
+                        "2 vitlöksklyftor (skalade och finhackade)",
+                        "2 morötter (skalade och rivna)",
+                        "2 msk matolja",
+                        "1 /2 dl tomatpuré",
+                        "500 g krossade tomater",
+                        "2 dl hönsbuljong",
+                        "2 msk kinesisk soja",
+                        "salt och svartpeppar",
+                        "4 portioner spaghetti",
+                    },
+                    ImageUrl = new Uri("https://www.ica.se//icase.azureedge.net/imagevaultfiles/id_101412/cf_259/spagetti-och-kottfarssas-712805-2.jpg"),
+                    Tags = new List<Tag>
+                    {
+                       new Tag
+                       {
+                            Id = 1,
+                            Name = "Köttfärs"
+                       },
+                        new Tag
+                       {
+                            Id = 2,
+                            Name = "Kött"
+                       }
+                    },
+
+                },
+                           new Recipe
+                {
+                    Id = Guid.NewGuid(),
+                    RecipeName = "Spaghetti & Köttfärssås",
+                    Cooking = "Bryn köttfärsen och grönsakerna i oljan, tillsätt tomatpuré och bryn med den ett tag. Tillsätt krossade tomater, hönsbuljong och soja, koka sakta 15 minuter, smaksätt med salt och peppar. Starta timer Koka spagetti enligt anvisningen på förpackningen. Till servering: Servera med riven parmesanost och körsbärstomater.",
+                    Ingridients = new List<string>{
+                        "500 g nötfärs",
+                        "1 gul lök (skalad och hackad)",
+                        "2 vitlöksklyftor (skalade och finhackade)",
+                        "2 morötter (skalade och rivna)",
+                        "2 msk matolja",
+                        "1 /2 dl tomatpuré",
+                        "500 g krossade tomater",
+                        "2 dl hönsbuljong",
+                        "2 msk kinesisk soja",
+                        "salt och svartpeppar",
+                        "4 portioner spaghetti",
+                    },
+                    ImageUrl = new Uri("https://www.ica.se//icase.azureedge.net/imagevaultfiles/id_101412/cf_259/spagetti-och-kottfarssas-712805-2.jpg"),
+                    Tags = new List<Tag>
+                    {
+                       new Tag
+                       {
+                            Id = 1,
+                            Name = "Köttfärs"
+                       },
+                        new Tag
+                       {
+                            Id = 2,
+                            Name = "Fläskfilé"
+                       },
+                         new Tag
+                       {
+                            Id = 3,
+                            Name = "Pasta"
+                       },
+                          new Tag
+                       {
+                            Id = 4,
+                            Name = "Glass"
+                       },
+                           new Tag
+                       {
+                            Id = 5,
+                            Name = "Vardagsmat"
+                       },
+                    }
+                },
             };
     }
   }

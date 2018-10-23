@@ -1,6 +1,8 @@
 import { FetchDataService } from './data-fetcher-service'
 import { Injectable } from '@angular/core';
 
+import { CloudData, CloudOptions } from 'angular-tag-cloud-module';
+
 
 import Recipe from '../models/Recipe';
 
@@ -32,6 +34,10 @@ export class DataFetcher {
     await this.dataFetcherService.getTags().then((data) => tags = data);
 
     return this.tags = tags;
+  }
+
+  async getTagsForCloud() {
+    return await this.dataFetcherService.getTagsForCloud();
   }
 }
 

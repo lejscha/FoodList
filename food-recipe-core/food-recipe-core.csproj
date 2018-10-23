@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="src\app\components\word-cloud\word-cloud.generator.ts" />
+    <None Remove="src\app\models\CloudData.ts" />
     <None Remove="src\app\models\Recipe.ts" />
     <None Remove="src\app\models\Tag.ts" />
   </ItemGroup>
@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="src\app\components\word-cloud\word-cloud.generator.ts" />
+    <TypeScriptCompile Include="src\app\models\CloudData.ts" />
     <TypeScriptCompile Include="src\app\models\Recipe.ts" />
     <TypeScriptCompile Include="src\app\models\Tag.ts" />
   </ItemGroup>

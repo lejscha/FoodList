@@ -1,6 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 import { WordCloudComponent } from './word-cloud.component';
-describe('AppComponent', function () {
+describe('WordCloudComponent', function () {
     beforeEach(async(function () {
         TestBed.configureTestingModule({
             declarations: [

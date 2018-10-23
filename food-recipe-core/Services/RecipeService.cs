@@ -5,22 +5,22 @@ using recipe_food.Models;
 
 namespace recipe_food.Services
 {
-    public class RecipeService : IRecipeService
+  public class RecipeService : IRecipeService
+  {
+    public List<Recipe> GetAllRecipies()
     {
-        public List<Recipe> GetAllRecipies()
-        {
 
-            IMockService _service = new MockService();
+      IMockService _service = new MockService();
 
-            return _service.GetRecipiesMock();
-        }
+      return _service.GetRecipiesMock();
+    }
 
-        public List<Recipe> GetRecipiesByTags()
-        {
-            IMockService _service = new MockService();
+    public List<Recipe> GetRecipiesByTags()
+    {
+      IMockService _service = new MockService();
 
-            return _service.GetRecipiesMock();
-        }
+      return _service.GetRecipiesMock();
+    }
 
     public IEnumerable<Tag> GetTags()
     {
@@ -28,15 +28,19 @@ namespace recipe_food.Services
 
       var allTags = _service.GetTagsMock();
 
-      var d = allTags.GroupBy(p => p.Id).Select(grp => grp.FirstOrDefault());
+      var allTagGrouped = allTags.GroupBy(p => p.Id);
+
+
+      var listToReturn = new List<Tag>();
+      foreach (var tagGroup in allTagGrouped)
+      {
+        tagGroup.FirstOrDefault().Count = tagGroup.Count();
+        listToReturn.Add(tagGroup.FirstOrDefault());
+      }
 
 
 
-
-
-
-      return d;
-
+      return listToReturn;
     }
   }
 }

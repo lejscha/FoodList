@@ -110,6 +110,9 @@ MIT
 @angular/platform-browser
 MIT
 
+angular-tag-cloud-module
+MIT
+
 rxjs
 Apache-2.0
                                Apache License
