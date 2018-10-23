@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import DataFetcher from '../../api-service/data-fetcher'
-
-
-import { CloudData, CloudOptions } from 'angular-tag-cloud-module';
+import { CloudOptions } from 'angular-tag-cloud-module';
 
 @Component({
   selector: 'word-cloud',
@@ -20,19 +18,6 @@ export class WordCloudComponent {
     height: 400,
     overflow: false,
   };
-
-  //data: CloudData[] = [
-  //  { text: 'WeiEEEolor', weight: 8, link: 'https://google.com', color: '#ffaaee' },
-  //  { text: 'WeightFDSFSAFDSAFSlor', weight: 4, link: 'https://google.com', color: '#ffaaee' },
-  //  { text: 'WeightFDSFSAFDSAFSDFEEEolor', weight: 14, link: 'https://google.com', color: '#ffaaee' },
-  //  { text: 'WeightFDSFSAFSDFEEEolor', weight: 2, link: 'https://google.com', color: '#ffaaee' },
-  //  { text: 'WeigSr', weight: 3, link: 'https://google.com', color: '#ffaaee' },
-  //  { text: 'WeightFDDFEEEolor', weight: 9, link: 'https://google.com', color: '#ffaaee' },
-  //  { text: 'WeightFDSFSAEEolor', weight: 20, link: 'https://google.com', color: '#ffaaee' },
-
-
-  //  // ...
-  //];
 
   data = this.dataFetcher.getTagsForCloud();
 }

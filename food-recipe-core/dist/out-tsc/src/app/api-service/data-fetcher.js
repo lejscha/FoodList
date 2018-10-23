@@ -45,33 +45,41 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 import { FetchDataService } from './data-fetcher-service';
 import { Injectable } from '@angular/core';
 var DataFetcher = /** @class */ (function () {
+    //recipes: Promise<Recipe[]>;
+    //tags: Promise<Tag[]>;
     function DataFetcher(dataFetcherService) {
+        //this.recipes = this.getRecipies();
+        //this.tags = this.getTags();
         this.dataFetcherService = dataFetcherService;
-        this.recipes = this.getRecipies();
-        this.tags = this.getTags();
     }
     DataFetcher.prototype.getRecipies = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var recipes;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.dataFetcherService.getRecipies().then(function (data) { return recipes = data; })];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/, this.recipes = recipes];
+                    case 0: return [4 /*yield*/, this.dataFetcherService.getRecipies()
+                        //return this.recipes = recipes;
+                    ]; //.then((data) => recipes = data);
+                    case 1: 
+                    //let recipes;
+                    return [2 /*return*/, _a.sent()
+                        //return this.recipes = recipes;
+                    ]; //.then((data) => recipes = data);
                 }
             });
         });
     };
     DataFetcher.prototype.getTags = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var tags;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.dataFetcherService.getTags().then(function (data) { return tags = data; })];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/, this.tags = tags];
+                    case 0: return [4 /*yield*/, this.dataFetcherService.getTags()
+                        //return this.tags = tags;
+                    ]; //.then((data) => tags = data);
+                    case 1: 
+                    //let tags;
+                    return [2 /*return*/, _a.sent()
+                        //return this.tags = tags;
+                    ]; //.then((data) => tags = data);
                 }
             });
         });

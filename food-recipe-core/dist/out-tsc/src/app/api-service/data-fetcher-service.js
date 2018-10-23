@@ -81,7 +81,6 @@ var FetchDataService = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.http.get("api/RecipeApi/GetTags").toPromise().then(function (data) {
-                            debugger;
                             return data.map(function (r) { return new CloudDataModel(r); });
                         })];
                     case 1: return [2 /*return*/, _a.sent()];

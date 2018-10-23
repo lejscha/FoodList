@@ -12,6 +12,6 @@ export class AppComponent {
   constructor(private readonly dataFetcher: DataFetcher) { }
 
   title = 'Våra recept';
-  recipies = this.dataFetcher.recipes;
-  tags = this.dataFetcher.tags;
+  recipies = this.dataFetcher.getRecipies();
+  tags = this.dataFetcher.getTags();
 }

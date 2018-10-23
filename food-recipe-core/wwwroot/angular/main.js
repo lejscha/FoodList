@@ -121,7 +121,6 @@ var FetchDataService = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.http.get("api/RecipeApi/GetTags").toPromise().then(function (data) {
-                            debugger;
                             return data.map(function (r) { return new _models_CloudData__WEBPACK_IMPORTED_MODULE_4__["CloudDataModel"](r); });
                         })];
                     case 1: return [2 /*return*/, _a.sent()];
@@ -199,33 +198,41 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 var DataFetcher = /** @class */ (function () {
+    //recipes: Promise<Recipe[]>;
+    //tags: Promise<Tag[]>;
     function DataFetcher(dataFetcherService) {
+        //this.recipes = this.getRecipies();
+        //this.tags = this.getTags();
         this.dataFetcherService = dataFetcherService;
-        this.recipes = this.getRecipies();
-        this.tags = this.getTags();
     }
     DataFetcher.prototype.getRecipies = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var recipes;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.dataFetcherService.getRecipies().then(function (data) { return recipes = data; })];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/, this.recipes = recipes];
+                    case 0: return [4 /*yield*/, this.dataFetcherService.getRecipies()
+                        //return this.recipes = recipes;
+                    ]; //.then((data) => recipes = data);
+                    case 1: 
+                    //let recipes;
+                    return [2 /*return*/, _a.sent()
+                        //return this.recipes = recipes;
+                    ]; //.then((data) => recipes = data);
                 }
             });
         });
     };
     DataFetcher.prototype.getTags = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var tags;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.dataFetcherService.getTags().then(function (data) { return tags = data; })];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/, this.tags = tags];
+                    case 0: return [4 /*yield*/, this.dataFetcherService.getTags()
+                        //return this.tags = tags;
+                    ]; //.then((data) => tags = data);
+                    case 1: 
+                    //let tags;
+                    return [2 /*return*/, _a.sent()
+                        //return this.tags = tags;
+                    ]; //.then((data) => tags = data);
                 }
             });
         });
@@ -301,8 +308,8 @@ var AppComponent = /** @class */ (function () {
     function AppComponent(dataFetcher) {
         this.dataFetcher = dataFetcher;
         this.title = 'Våra recept';
-        this.recipies = this.dataFetcher.recipes;
-        this.tags = this.dataFetcher.tags;
+        this.recipies = this.dataFetcher.getRecipies();
+        this.tags = this.dataFetcher.getTags();
     }
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -347,7 +354,6 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-//import { WordCloudComponent } from '../../components/word-cloud/word-cloud.component'
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -428,16 +434,6 @@ var WordCloudComponent = /** @class */ (function () {
             height: 400,
             overflow: false,
         };
-        //data: CloudData[] = [
-        //  { text: 'WeiEEEolor', weight: 8, link: 'https://google.com', color: '#ffaaee' },
-        //  { text: 'WeightFDSFSAFDSAFSlor', weight: 4, link: 'https://google.com', color: '#ffaaee' },
-        //  { text: 'WeightFDSFSAFDSAFSDFEEEolor', weight: 14, link: 'https://google.com', color: '#ffaaee' },
-        //  { text: 'WeightFDSFSAFSDFEEEolor', weight: 2, link: 'https://google.com', color: '#ffaaee' },
-        //  { text: 'WeigSr', weight: 3, link: 'https://google.com', color: '#ffaaee' },
-        //  { text: 'WeightFDDFEEEolor', weight: 9, link: 'https://google.com', color: '#ffaaee' },
-        //  { text: 'WeightFDSFSAEEolor', weight: 20, link: 'https://google.com', color: '#ffaaee' },
-        //  // ...
-        //];
         this.data = this.dataFetcher.getTagsForCloud();
     }
     WordCloudComponent = __decorate([

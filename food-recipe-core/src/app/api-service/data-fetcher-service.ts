@@ -24,9 +24,6 @@ export class FetchDataService {
 
   async getTagsForCloud(): Promise<CloudData[]> {
     return await this.http.get<CloudData[]>("api/RecipeApi/GetTags").toPromise().then(function (data) {
-
-      debugger
-
       return data.map((r: any) => new CloudDataModel(r))
     });
   }
