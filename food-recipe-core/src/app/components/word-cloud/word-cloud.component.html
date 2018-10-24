@@ -1,5 +1,7 @@
 <div>
   <angular-tag-cloud [data]="data | async"
+                     (clicked)="test($event)"
+                     [zoomOnHover]="zoomOnHoverOptions"
                      [width]="options.width"
                      [height]="options.height"
                      [overflow]="options.overflow">

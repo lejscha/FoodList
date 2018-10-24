@@ -198,25 +198,15 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 var DataFetcher = /** @class */ (function () {
-    //recipes: Promise<Recipe[]>;
-    //tags: Promise<Tag[]>;
     function DataFetcher(dataFetcherService) {
-        //this.recipes = this.getRecipies();
-        //this.tags = this.getTags();
         this.dataFetcherService = dataFetcherService;
     }
     DataFetcher.prototype.getRecipies = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.dataFetcherService.getRecipies()
-                        //return this.recipes = recipes;
-                    ]; //.then((data) => recipes = data);
-                    case 1: 
-                    //let recipes;
-                    return [2 /*return*/, _a.sent()
-                        //return this.recipes = recipes;
-                    ]; //.then((data) => recipes = data);
+                    case 0: return [4 /*yield*/, this.dataFetcherService.getRecipies()];
+                    case 1: return [2 /*return*/, _a.sent()];
                 }
             });
         });
@@ -225,14 +215,8 @@ var DataFetcher = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.dataFetcherService.getTags()
-                        //return this.tags = tags;
-                    ]; //.then((data) => tags = data);
-                    case 1: 
-                    //let tags;
-                    return [2 /*return*/, _a.sent()
-                        //return this.tags = tags;
-                    ]; //.then((data) => tags = data);
+                    case 0: return [4 /*yield*/, this.dataFetcherService.getTags()];
+                    case 1: return [2 /*return*/, _a.sent()];
                 }
             });
         });
@@ -266,7 +250,7 @@ var DataFetcher = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n\r\n\r\n<!--<div *ngFor=\"let tag of tags | async\">\r\n  <p>{{tag.name}}</p>\r\n</div>-->\r\n\r\n\r\n<div *ngFor=\"let recipe of recipies | async\" class=\"recipe-container\" style=\"background-color: white; border-radius:15%; border-right: 1px solid black; border-left: 1px solid black; padding-left:120px; padding-right:120px;\">\r\n  <div>\r\n    <h3>\r\n      <strong>{{recipe.name}}</strong>\r\n    </h3>\r\n  </div>\r\n\r\n  <div class=\"row\" style=\"margin-bottom: 1em;\">\r\n    <div class=\"col-md-4\" style=\"border-left:1px solid black; border-radius:50%;\">\r\n      <img src=\"{{recipe.imageUrl}}\" style=\"height:100%; width:100%; border-radius:50%;\" />\r\n      <hr />\r\n    </div>\r\n\r\n    <div class=\"col-md-8\">\r\n      <div *ngFor=\"let tag of recipe.tags\" class=\"btn btn-default btn-md\" style=\"margin:5px;\">\r\n        {{tag.name}}\r\n      </div>\r\n\r\n    </div>\r\n\r\n  </div>\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-md-4\">\r\n      <h4>\r\n        <strong>Ingridienser</strong>\r\n      </h4>\r\n      <ul *ngFor=\"let ingridient of recipe.ingridients\">\r\n        <li>{{ingridient}}</li>\r\n      </ul>\r\n    </div>\r\n    <div class=\"col-md-8\" style=\"border-left:1px solid #eee\">\r\n      <h4>\r\n        <strong>Tillagning</strong>\r\n      </h4>\r\n      <div>\r\n        <p>{{recipe.cooking}}</p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <hr />\r\n</div>\r\n\r\n\r\n\r\n<!--<div id=\"myCarousel\" class=\"carousel slide\" data-ride=\"carousel\" data-interval=\"6000\">\r\n  <ol class=\"carousel-indicators\">\r\n    <li data-target=\"#myCarousel\" data-slide-to=\"0\" class=\"active\"></li>\r\n    <li data-target=\"#myCarousel\" data-slide-to=\"1\"></li>\r\n    <li data-target=\"#myCarousel\" data-slide-to=\"2\"></li>\r\n  </ol>\r\n  <div class=\"carousel-inner\" role=\"listbox\">\r\n    <div class=\"item active\">\r\n      <img src=\"~/images/banner1.svg\" alt=\"ASP.NET\" class=\"img-responsive\" />\r\n      <div class=\"carousel-caption\" role=\"option\">\r\n        <p>\r\n          Learn how to build ASP.NET apps that can run anywhere.\r\n          <a class=\"btn btn-default\" href=\"https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409\">\r\n            Learn More\r\n          </a>\r\n        </p>\r\n      </div>\r\n    </div>\r\n    <div class=\"item\">\r\n      <img src=\"https://www.ica.se//icase.azureedge.net/imagevaultfiles/id_189185/cf_259/pizza-med-salami-och-skinka-familj-724617.jpg\" alt=\"Visual Studio\" class=\"img-responsive\" />\r\n      <div class=\"carousel-caption\" role=\"option\">\r\n        <p>\r\n          There are powerful new features in Visual Studio for building modern web apps.\r\n          <a class=\"btn btn-default\" href=\"https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409\">\r\n            Learn More\r\n          </a>\r\n        </p>\r\n      </div>\r\n    </div>\r\n    <div class=\"item\">\r\n      <img src=\"~/images/banner3.svg\" alt=\"Microsoft Azure\" class=\"img-responsive\" />\r\n      <div class=\"carousel-caption\" role=\"option\">\r\n        <p>\r\n          Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.\r\n          <a class=\"btn btn-default\" href=\"https://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409\">\r\n            Learn More\r\n          </a>\r\n        </p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <a class=\"left carousel-control\" href=\"#myCarousel\" role=\"button\" data-slide=\"prev\">\r\n    <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span>\r\n    <span class=\"sr-only\">Previous</span>\r\n  </a>\r\n  <a class=\"right carousel-control\" href=\"#myCarousel\" role=\"button\" data-slide=\"next\">\r\n    <span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span>\r\n    <span class=\"sr-only\">Next</span>\r\n  </a>\r\n</div>-->\r\n"
+module.exports = "<div *ngFor=\"let recipe of recipies | async\" class=\"recipe-container\" style=\"background-color: white; border-radius:15%; border-right: 1px solid black; border-left: 1px solid black; padding-left:120px; padding-right:120px;\">\r\n  <div>\r\n    <h3>\r\n      <strong>{{recipe.name}}</strong>\r\n    </h3>\r\n  </div>\r\n\r\n  <div class=\"row\" style=\"margin-bottom: 1em;\">\r\n    <div class=\"col-md-4\" style=\"border-left:1px solid black; border-radius:50%;\">\r\n      <img src=\"{{recipe.imageUrl}}\" style=\"height:100%; width:100%; border-radius:50%;\" />\r\n      <hr />\r\n    </div>\r\n\r\n    <div class=\"col-md-8\">\r\n      <div *ngFor=\"let tag of recipe.tags\" class=\"btn btn-default btn-md\" style=\"margin:5px;\">\r\n        {{tag.name}}\r\n      </div>\r\n\r\n    </div>\r\n\r\n  </div>\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-md-4\">\r\n      <h4>\r\n        <strong>Ingridienser</strong>\r\n      </h4>\r\n      <ul *ngFor=\"let ingridient of recipe.ingridients\">\r\n        <li>{{ingridient}}</li>\r\n      </ul>\r\n    </div>\r\n    <div class=\"col-md-8\" style=\"border-left:1px solid #eee\">\r\n      <h4>\r\n        <strong>Tillagning</strong>\r\n      </h4>\r\n      <div>\r\n        <p>{{recipe.cooking}}</p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <hr />\r\n</div>\r\n\r\n\r\n\r\n<!--<div id=\"myCarousel\" class=\"carousel slide\" data-ride=\"carousel\" data-interval=\"6000\">\r\n  <ol class=\"carousel-indicators\">\r\n    <li data-target=\"#myCarousel\" data-slide-to=\"0\" class=\"active\"></li>\r\n    <li data-target=\"#myCarousel\" data-slide-to=\"1\"></li>\r\n    <li data-target=\"#myCarousel\" data-slide-to=\"2\"></li>\r\n  </ol>\r\n  <div class=\"carousel-inner\" role=\"listbox\">\r\n    <div class=\"item active\">\r\n      <img src=\"~/images/banner1.svg\" alt=\"ASP.NET\" class=\"img-responsive\" />\r\n      <div class=\"carousel-caption\" role=\"option\">\r\n        <p>\r\n          Learn how to build ASP.NET apps that can run anywhere.\r\n          <a class=\"btn btn-default\" href=\"https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409\">\r\n            Learn More\r\n          </a>\r\n        </p>\r\n      </div>\r\n    </div>\r\n    <div class=\"item\">\r\n      <img src=\"https://www.ica.se//icase.azureedge.net/imagevaultfiles/id_189185/cf_259/pizza-med-salami-och-skinka-familj-724617.jpg\" alt=\"Visual Studio\" class=\"img-responsive\" />\r\n      <div class=\"carousel-caption\" role=\"option\">\r\n        <p>\r\n          There are powerful new features in Visual Studio for building modern web apps.\r\n          <a class=\"btn btn-default\" href=\"https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409\">\r\n            Learn More\r\n          </a>\r\n        </p>\r\n      </div>\r\n    </div>\r\n    <div class=\"item\">\r\n      <img src=\"~/images/banner3.svg\" alt=\"Microsoft Azure\" class=\"img-responsive\" />\r\n      <div class=\"carousel-caption\" role=\"option\">\r\n        <p>\r\n          Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.\r\n          <a class=\"btn btn-default\" href=\"https://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409\">\r\n            Learn More\r\n          </a>\r\n        </p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <a class=\"left carousel-control\" href=\"#myCarousel\" role=\"button\" data-slide=\"prev\">\r\n    <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span>\r\n    <span class=\"sr-only\">Previous</span>\r\n  </a>\r\n  <a class=\"right carousel-control\" href=\"#myCarousel\" role=\"button\" data-slide=\"next\">\r\n    <span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span>\r\n    <span class=\"sr-only\">Next</span>\r\n  </a>\r\n</div>-->\r\n"
 
 /***/ }),
 
@@ -387,7 +371,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n  <angular-tag-cloud [data]=\"data | async\"\r\n                     [width]=\"options.width\"\r\n                     [height]=\"options.height\"\r\n                     [overflow]=\"options.overflow\">\r\n  </angular-tag-cloud>\r\n</div>\r\n"
+module.exports = "<div>\r\n  <angular-tag-cloud [data]=\"data | async\"\r\n                     (clicked)=\"test($event)\"\r\n                     [zoomOnHover]=\"zoomOnHoverOptions\"\r\n                     [width]=\"options.width\"\r\n                     [height]=\"options.height\"\r\n                     [overflow]=\"options.overflow\">\r\n  </angular-tag-cloud>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -434,8 +418,17 @@ var WordCloudComponent = /** @class */ (function () {
             height: 400,
             overflow: false,
         };
+        this.zoomOnHoverOptions = {
+            scale: 1.3,
+            transitionTime: 0.2,
+            delay: 0.1 // Zoom will take affect after 0.8 seconds
+        };
         this.data = this.dataFetcher.getTagsForCloud();
     }
+    WordCloudComponent.prototype.test = function (clicked) {
+        debugger;
+        console.log(clicked + 'is clicked!');
+    };
     WordCloudComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'word-cloud',
@@ -522,6 +515,7 @@ var CloudDataModel = /** @class */ (function () {
     function CloudDataModel(data) {
         this.text = data.name;
         this.weight = data.count;
+        this.link = "www.google.se";
     }
     return CloudDataModel;
 }());

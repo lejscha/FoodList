@@ -13,8 +13,8 @@ var AppComponent = /** @class */ (function () {
     function AppComponent(dataFetcher) {
         this.dataFetcher = dataFetcher;
         this.title = 'Våra recept';
-        this.recipies = this.dataFetcher.getRecipies;
-        this.tags = this.dataFetcher.getTags;
+        this.recipies = this.dataFetcher.getRecipies();
+        this.tags = this.dataFetcher.getTags();
     }
     AppComponent = __decorate([
         Component({

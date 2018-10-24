@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import DataFetcher from '../../api-service/data-fetcher'
-import { CloudOptions } from 'angular-tag-cloud-module';
+import { CloudData, CloudOptions, ZoomOnHoverOptions } from 'angular-tag-cloud-module';
+
+
 
 @Component({
   selector: 'word-cloud',
@@ -19,5 +21,23 @@ export class WordCloudComponent {
     overflow: false,
   };
 
+  zoomOnHoverOptions: ZoomOnHoverOptions = {
+    scale: 1.3, // Elements will become 130 % of current zize on hover
+    transitionTime: 0.2, // it will take 1.2 seconds until the zoom level defined in scale property has been reached
+    delay: 0.1 // Zoom will take affect after 0.8 seconds
+  }
+
+
+
   data = this.dataFetcher.getTagsForCloud();
+
+
+  test(clicked: CloudData) {
+
+    debugger
+
+    console.log(clicked + 'is clicked!')
+  }
+
+
 }
